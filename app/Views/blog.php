@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <h1><?=$title?></h1>
+    <?= $this->extend('layouts/main')?>
+    <?=$this-> section('content')?>
+      <div class="container">
+        <h1><?=$title?></h1>
+          <div class="row">
+            <?= $this->include('partials/sidebar')?>
+            <div class="col-12 col-sm-9">
+              <div class="row">
+                <?php foreach($posts as $post):?>
+                <?= view_cell('\App\Libraries\Blog::postitem', ['title' => $post])?>
+                <?php endforeach;?>  
+              </div>
 
-        <?php foreach($posts as $post):?>
-            <div>
-                <h3><?=$post?></h3>
-                <p>this is a post</p>
-                <img src="/assets/images/avatar1.png" style="width:200px;height:auto;" alt="altimage">
+
             </div>
-        <?php endforeach;?>
+          </div>
+      </div>
+    <?=$this->endSection()?>
+
   </body>
 </html>

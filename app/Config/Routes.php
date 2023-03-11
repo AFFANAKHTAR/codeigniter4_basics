@@ -55,8 +55,18 @@ $routes->group('admin', function ($routes){
 
 //blog outside admin
 $routes->add('blog','Blog::index');
-$routes->add('blog/post','Blog::post');
+$routes->add('post','Blog::post');
+$routes->add('post/(:any)','Blog::post/$1');
+$routes->add('new','Blog::new');
+$routes->add('delete/(:any)','Blog::delete/$1');
+$routes->add('edit/(:any)','Blog::edit/$1');
 
+//for controller posts
+$routes->add('posts','Posts::index');
+$routes->add('posts/where','Posts::where');
+$routes->add('posts/join','Posts::join');
+$routes->add('posts/like','Posts::like');
+$routes->add('posts/wherein','Posts::wherein');
 
 
 
